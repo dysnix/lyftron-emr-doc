@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <property>
+    <name>lyftron.api.key</name>
+    <value>lyftron-key</value>
+    <description>
+      The api key used for request authorization
+    </description>
+  </property>
+  <property>
+    <name>lyftron.driver.port</name>
+    <value>8400</value>
+  </property>
+  <property>
+    <name>lyftron.driver.protocol</name>
+    <value>thrift</value>
+  </property>
+  <property>
+	<name>lyftron.ha.enable</name>
+	<value>true</value>
+  </property>
+  <property>
+	  <name>spark.sql.catalogImplementation</name>
+	  <value>hive</value>
+  </property>
+
+<!--<property>
+    <name>ha.zookeeper.quorum</name>
+    <value></value>
+	<description>
+      a CSV-list of server:port values of Zookeeper servers, if left empty, we will try to find it in the env config
+    </description>
+  </property> -->
+  
+</configuration>
