@@ -35,13 +35,23 @@ After cluster creation we need to configure Security Groups to permit us to conn
 
 Now we're ready to deploy driver to EMR cluster
 
-## Upload driver to the cluster
+## Download the driver code to the spark master
 * click to the created cluster, "Summary" tab, and pick value of "Master public DNS". That's the endpoint we'll need to connect to via SSH port 22.
-* upload content of this directory(not the directory itself) via scp/sftp to remote `/home/hadoop` directory(default directory), 
-use `hadoop` as username and endpoint from previous line. You need to specify EC2 key you'd used to create a EMR cluster. Here is `scp` example:
+* login to the Master node using ssh, ex: `ssh -i emr.key hadoop@ec2-3-120-231-87.eu-central-1.compute.amazonaws.com`
+* install git and clone the driver repository (this repository):
     ```bash
-    scp -i emr.key -r spark_driver/* hadoop@ec2-3-120-231-87.eu-central-1.compute.amazonaws.com:
-    ``` 
+    # execute the bellow commands on the master node
+    
+    sudo yum install git
+    # (click Y+enter to confirm)
+    
+    git clone https://github.com/dysnix/lyftron-emr-doc.git
+    pwd
+    # should output /home/hadoop
+    
+    cp -r lyftron-emr-doc/. .   
+    ```
+
 ## Start driver
 * connect to "Master public DNS" cluster endpoint via ssh client, use port 22, user `hadoop` and EC2 key used during EMR cluster creation. 
 Here is `ssh` example:
